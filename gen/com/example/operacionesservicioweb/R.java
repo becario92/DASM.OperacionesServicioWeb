@@ -27,30 +27,31 @@ public final class R {
     public static final class id {
         public static final int CreateButton=0x7f08000e;
         public static final int DeleteButton=0x7f08000f;
-        public static final int EditText01=0x7f08000b;
-        public static final int EditText02=0x7f080009;
-        public static final int EditText03=0x7f080007;
-        public static final int EditText04=0x7f080005;
-        public static final int EditText05=0x7f080003;
         public static final int LinearLayout=0x7f080000;
+        public static final int ReadApellidos=0x7f080007;
         public static final int ReadButton=0x7f080014;
+        public static final int ReadDireccion=0x7f080009;
+        public static final int ReadDni=0x7f080003;
+        public static final int ReadEquipo=0x7f08000d;
+        public static final int ReadNombre=0x7f080005;
+        public static final int ReadTelefono=0x7f08000b;
         public static final int TextView01=0x7f08000a;
         public static final int TextView02=0x7f080008;
         public static final int TextView03=0x7f080006;
         public static final int TextView04=0x7f080004;
         public static final int TextView05=0x7f080002;
-        public static final int Update=0x7f08001a;
+        public static final int Update=0x7f08001b;
         public static final int UpdateButton=0x7f080015;
-        public static final int action_settings=0x7f08001b;
-        public static final int button1=0x7f080019;
-        public static final int button2=0x7f080016;
-        public static final int button3=0x7f080018;
-        public static final int button4=0x7f080017;
+        public static final int action_settings=0x7f08001c;
+        public static final int button1=0x7f08001a;
+        public static final int button2=0x7f080017;
+        public static final int button3=0x7f080019;
+        public static final int button4=0x7f080018;
         public static final int consultaDeRegistros=0x7f080011;
-        public static final int dni=0x7f08000d;
         public static final int equipoLabel=0x7f080012;
         public static final int equipoText=0x7f080013;
         public static final int mainLayout=0x7f080010;
+        public static final int recordView=0x7f080016;
         public static final int textView1=0x7f080001;
         public static final int textView2=0x7f08000c;
     }
@@ -93,10 +94,12 @@ public final class R {
         public static final int action_settings=0x7f050005;
         public static final int app_name=0x7f050000;
         public static final int progress_title=0x7f050006;
+        public static final int recordView=0x7f050021;
         public static final int title_create_activity=0x7f050001;
         public static final int title_delete_activity=0x7f050004;
         public static final int title_read_activity=0x7f050002;
         public static final int title_update_activity=0x7f050003;
+        public static final int vistaRegistros=0x7f050020;
     }
     public static final class style {
         /** 

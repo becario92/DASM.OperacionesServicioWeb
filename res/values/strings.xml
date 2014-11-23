@@ -33,5 +33,7 @@
     <string name="BorradoRegistro">Borrado de Registro</string>
     <string name="InsercionRegistro">Inserción de Registro</string>
     <string name="ModificacionRegistro">Modificación de Registro</string>
+    <string name="vistaRegistros"></string>
+    <string name="recordView"></string>
 
 </resources>
