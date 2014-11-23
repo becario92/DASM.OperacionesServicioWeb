@@ -13,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class ReadActivity extends Activity {
 	
@@ -28,9 +27,7 @@ public class ReadActivity extends Activity {
 
 		Intent i = getIntent();
 		Bundle extras = i.getExtras();
-		String mensaje = extras.getString("mensaje");
 		String datos = extras.getString("datos");
-		Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
 
 		try {
 			records = new JSONArray(datos);
@@ -70,12 +67,12 @@ public class ReadActivity extends Activity {
 			
 			record = records.getJSONObject(numRecord);
 			
-			TextView dni = (TextView)findViewById(R.id.ReadDni);
-			TextView nombre = (TextView)findViewById(R.id.ReadNombre);
-			TextView apellidos = (TextView)findViewById(R.id.ReadApellidos);
-			TextView direccion = (TextView)findViewById(R.id.ReadDireccion);
-			TextView telefono = (TextView)findViewById(R.id.ReadTelefono);
-			TextView equipo = (TextView)findViewById(R.id.ReadEquipo);
+			TextView dni = (TextView)findViewById(R.id.dni);
+			TextView nombre = (TextView)findViewById(R.id.nombre);
+			TextView apellidos = (TextView)findViewById(R.id.apellidos);
+			TextView direccion = (TextView)findViewById(R.id.direccion);
+			TextView telefono = (TextView)findViewById(R.id.telefono);
+			TextView equipo = (TextView)findViewById(R.id.equipo);
 			
 			dni.setText(record.getString("DNI"));
 			nombre.setText(record.getString("Nombre"));
@@ -84,7 +81,7 @@ public class ReadActivity extends Activity {
 			telefono.setText(record.getString("Telefono"));
 			equipo.setText(record.getString("Equipo"));
 			
-			dni.setFocusable(false);
+			dni.setEnabled(false);
 			nombre.setFocusable(false);
 			apellidos.setFocusable(false);
 			direccion.setFocusable(false);
@@ -117,5 +114,13 @@ public class ReadActivity extends Activity {
 
 	public void lastRecord(View v) {
 		showRecord(numRecord = numRecords);
+	}
+	
+	@Override
+	public void onBackPressed(){
+		Intent i=new Intent();
+		i.putExtra("respuesta","Consulta finalizada");
+		setResult(RESULT_OK,i);
+		super.onBackPressed();
 	}
 }

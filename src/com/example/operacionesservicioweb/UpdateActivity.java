@@ -21,7 +21,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class UpdateActivity extends Activity {
 	
@@ -32,12 +31,9 @@ public class UpdateActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.update_view);
-
-		Intent i = getIntent();
-		extras = i.getExtras();
-		String mensaje = extras.getString("mensaje");
+		
+		extras = getIntent().getExtras();
 		String datos = extras.getString("datos");
-		Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
 
 		try {
 			records = new JSONArray(datos);
@@ -50,12 +46,12 @@ public class UpdateActivity extends Activity {
 		try {
 			record = records.getJSONObject(1);
 
-			TextView dni = (TextView)findViewById(R.id.ReadDni);
-			EditText nombre = (EditText)findViewById(R.id.ReadNombre);
-			EditText apellidos = (EditText)findViewById(R.id.ReadApellidos);
-			EditText direccion = (EditText)findViewById(R.id.ReadDireccion);
-			EditText telefono = (EditText)findViewById(R.id.ReadTelefono);
-			EditText equipo = (EditText)findViewById(R.id.ReadEquipo);
+			TextView dni = (TextView)findViewById(R.id.dni);
+			EditText nombre = (EditText)findViewById(R.id.nombre);
+			EditText apellidos = (EditText)findViewById(R.id.apellidos);
+			EditText direccion = (EditText)findViewById(R.id.direccion);
+			EditText telefono = (EditText)findViewById(R.id.telefono);
+			EditText equipo = (EditText)findViewById(R.id.equipo);
 
 			dni.setText(record.getString("DNI"));
 			nombre.setText(record.getString("Nombre"));
@@ -64,7 +60,7 @@ public class UpdateActivity extends Activity {
 			telefono.setText(record.getString("Telefono"));
 			equipo.setText(record.getString("Equipo"));
 			
-			dni.setFocusable(false);
+			dni.setEnabled(false);
 		} catch (JSONException e1) {
 			e1.printStackTrace();
 		}
@@ -89,14 +85,14 @@ public class UpdateActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	public void modificarRegistro(View v) {
+	public void updateRecord(View v) {
 		try {
-			EditText dni = (EditText)findViewById(R.id.ReadDni);
-			EditText nombre = (EditText)findViewById(R.id.ReadNombre);
-			EditText apellidos = (EditText)findViewById(R.id.ReadApellidos);
-			EditText direccion = (EditText)findViewById(R.id.ReadDireccion);
-			EditText telefono = (EditText)findViewById(R.id.ReadTelefono);
-			EditText equipo = (EditText)findViewById(R.id.ReadEquipo);
+			EditText dni = (EditText)findViewById(R.id.dni);
+			EditText nombre = (EditText)findViewById(R.id.nombre);
+			EditText apellidos = (EditText)findViewById(R.id.apellidos);
+			EditText direccion = (EditText)findViewById(R.id.direccion);
+			EditText telefono = (EditText)findViewById(R.id.telefono);
+			EditText equipo = (EditText)findViewById(R.id.equipo);
 			
 			String json = "";
 			JSONObject jsonObject = new JSONObject();
@@ -108,11 +104,12 @@ public class UpdateActivity extends Activity {
 			jsonObject.put("Equipo", equipo.getText().toString());
 			json = jsonObject.toString();
 			
+			new UpdateBD().execute(json);
+			
 			Intent i=new Intent();
-			i.putExtra("respuesta","Inserción realizada");
-			i.putExtra("json", json);
+			i.putExtra("respuesta","Actualización realizada");
 			setResult(RESULT_OK,i);
-			new ModificacionBD().execute(json);
+			
 			finish();
 		} catch (JSONException e) {
 			Log.e("Error en la operaciÃ³n (JSON)", e.toString());
@@ -120,7 +117,7 @@ public class UpdateActivity extends Activity {
 		} 
 	}
 	
-	private class ModificacionBD extends AsyncTask<String, Void, Void>{
+	private class UpdateBD extends AsyncTask<String, Void, Void> {
 
 		@Override
 		protected Void doInBackground(String... params) {
@@ -139,5 +136,13 @@ public class UpdateActivity extends Activity {
 			return null;
 		}
 		
+	}
+	
+	@Override
+	public void onBackPressed(){
+		Intent i=new Intent();
+		i.putExtra("respuesta","Actualización cancelada");
+		setResult(RESULT_CANCELED,i);
+		super.onBackPressed();
 	}
 }

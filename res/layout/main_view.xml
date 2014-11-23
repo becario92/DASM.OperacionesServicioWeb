@@ -53,38 +53,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal" >
-
-        <Button
-            android:id="@+id/CreateButton"
-            style="?android:attr/buttonStyleSmall"
+        
+        <ImageView
+            android:id="@+id/imageBuscar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="lanzarCreateActivity"
-            android:text="@string/Create" />
+            android:onClick="launchReadActivity"
+            android:src="@android:drawable/ic_menu_search" />
 
-        <Button
-            android:id="@+id/ReadButton"
-            style="?android:attr/buttonStyleSmall"
+        <ImageView
+            android:id="@+id/imageAnadir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="lanzarReadActivity"
-            android:text="@string/Read" />
+            android:onClick="launchCreateActivity"
+            android:src="@android:drawable/ic_menu_add" />
 
-        <Button
-            android:id="@+id/UpdateButton"
-            style="?android:attr/buttonStyleSmall"
+        <ImageView
+            android:id="@+id/imageEditar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="lanzarUpdateActivity"
-            android:text="@string/Update" />
+            android:onClick="launchUpdateActivity"
+            android:src="@android:drawable/ic_menu_edit" />
 
-        <Button
-            android:id="@+id/DeleteButton"
-            style="?android:attr/buttonStyleSmall"
+        <ImageView
+            android:id="@+id/imageBorrar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="lanzarDeleteActivity"
-            android:text="@string/Delete" />
+            android:onClick="launchDeleteActivity"
+            android:src="@android:drawable/ic_menu_delete" />
 
     </LinearLayout>
 

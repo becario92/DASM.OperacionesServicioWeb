@@ -20,12 +20,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class CreateActivity extends Activity {
 	
 	private Bundle extras;
-	private String mensaje;
 	private TextView dni;
 
 	@Override
@@ -33,13 +31,10 @@ public class CreateActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.create_view);
 
-		Intent i = getIntent();
-		extras = i.getExtras();
-		mensaje = extras.getString("mensaje");
-		Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
-
-		dni = (TextView)findViewById(R.id.ReadDni);
+		extras = getIntent().getExtras();
+		dni = (TextView)findViewById(R.id.dni);
 		dni.setText(extras.getString("dni"));
+		dni.setEnabled(false);
 	}
 
 	@Override
@@ -61,14 +56,14 @@ public class CreateActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	public void insertarRegistro(View v) {
+	public void createRecord(View v) {
 		try {
 			
-			EditText nombre = (EditText)findViewById(R.id.ReadNombre);
-			EditText apellidos = (EditText)findViewById(R.id.ReadApellidos);
-			EditText direccion = (EditText)findViewById(R.id.ReadDireccion);
-			EditText telefono = (EditText)findViewById(R.id.ReadTelefono);
-			EditText equipo = (EditText)findViewById(R.id.ReadEquipo);
+			EditText nombre = (EditText)findViewById(R.id.nombre);
+			EditText apellidos = (EditText)findViewById(R.id.apellidos);
+			EditText direccion = (EditText)findViewById(R.id.direccion);
+			EditText telefono = (EditText)findViewById(R.id.telefono);
+			EditText equipo = (EditText)findViewById(R.id.equipo);
 			
 			String json = "";
 			JSONObject jsonObject = new JSONObject();
@@ -80,11 +75,12 @@ public class CreateActivity extends Activity {
 			jsonObject.put("Equipo", equipo.getText().toString());
 			json = jsonObject.toString();
 			
+			new CreateBD().execute(json);
+			
 			Intent i=new Intent();
 			i.putExtra("respuesta","Inserción realizada");
-			i.putExtra("json", json);
 			setResult(RESULT_OK,i);
-			new InsercionBD().execute(json);
+			
 			finish();
 		} catch (JSONException e) {
 			Log.e("Error en la operaciÃ³n (JSON)", e.toString());
@@ -92,7 +88,7 @@ public class CreateActivity extends Activity {
 		} 
 	}
 	
-	private class InsercionBD extends AsyncTask<String, Void, Void>{
+	private class CreateBD extends AsyncTask<String, Void, Void>{
 
 		@Override
 		protected Void doInBackground(String... params) {
@@ -108,8 +104,17 @@ public class CreateActivity extends Activity {
 				Log.e("Error en la operaciÃ³n (IO)", e.toString());
 				e.printStackTrace();
 			}
+			
 			return null;
 		}
 		
+	}
+	
+	@Override
+	public void onBackPressed(){
+		Intent i=new Intent();
+		i.putExtra("respuesta","Inserción cancelada");
+		setResult(RESULT_CANCELED,i);
+		super.onBackPressed();
 	}
 }

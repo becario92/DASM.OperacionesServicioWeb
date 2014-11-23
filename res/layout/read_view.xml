@@ -50,7 +50,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
-            android:id="@+id/ReadDni"
+            android:id="@+id/dni"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -71,7 +71,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
-            android:id="@+id/ReadNombre"
+            android:id="@+id/nombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -93,7 +93,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
-            android:id="@+id/ReadApellidos"
+            android:id="@+id/apellidos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -114,7 +114,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
-            android:id="@+id/ReadDireccion"
+            android:id="@+id/direccion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -135,7 +135,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
-            android:id="@+id/ReadTelefono"
+            android:id="@+id/telefono"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -156,7 +156,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
-            android:id="@+id/ReadEquipo"
+            android:id="@+id/equipo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -172,38 +172,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal" >
-
-        <Button
-            android:id="@+id/button2"
-            style="?android:attr/buttonStyleSmall"
+        
+        <ImageView
+            android:id="@+id/imagePrimero"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="firstRecord"
-            android:text="@string/FirstButton" />
+            android:src="@android:drawable/ic_media_previous" />
 
-        <Button
-            android:id="@+id/button4"
-            style="?android:attr/buttonStyleSmall"
+        <ImageView
+            android:id="@+id/imageAnterior"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="previousRecord"
-            android:text="@string/PreviousButton" />
+            android:src="@android:drawable/ic_media_rew" />
 
-        <Button
-            android:id="@+id/button3"
-            style="?android:attr/buttonStyleSmall"
+        <ImageView
+            android:id="@+id/imageSiguiente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="followingRecord"
-            android:text="@string/FollowingButton" />
+            android:src="@android:drawable/ic_media_ff" />
 
-        <Button
-            android:id="@+id/button1"
-            style="?android:attr/buttonStyleSmall"
+        <ImageView
+            android:id="@+id/imageUltimo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="lastRecord"
-            android:text="@string/LastButton" />
+            android:src="@android:drawable/ic_media_next" />
 
     </LinearLayout>
 

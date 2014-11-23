@@ -20,12 +20,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class DeleteActivity extends Activity {
 	
 	private JSONArray records;
 	private JSONObject record;
+	private Bundle extras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,26 +33,19 @@ public class DeleteActivity extends Activity {
         setContentView(R.layout.delete_view);
         
         Intent i = getIntent();
-        Bundle extras = i.getExtras();
-        String mensaje = extras.getString("mensaje");
+        extras = i.getExtras();
         String datos = extras.getString("datos");
-		Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
 
 		try {
 			records = new JSONArray(datos);
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-
-		try {
 			record = records.getJSONObject(1);
 
-			TextView dni = (TextView)findViewById(R.id.ReadDni);
-			EditText nombre = (EditText)findViewById(R.id.ReadNombre);
-			EditText apellidos = (EditText)findViewById(R.id.ReadApellidos);
-			EditText direccion = (EditText)findViewById(R.id.ReadDireccion);
-			EditText telefono = (EditText)findViewById(R.id.ReadTelefono);
-			EditText equipo = (EditText)findViewById(R.id.ReadEquipo);
+			TextView dni = (TextView)findViewById(R.id.dni);
+			EditText nombre = (EditText)findViewById(R.id.nombre);
+			EditText apellidos = (EditText)findViewById(R.id.apellidos);
+			EditText direccion = (EditText)findViewById(R.id.direccion);
+			EditText telefono = (EditText)findViewById(R.id.telefono);
+			EditText equipo = (EditText)findViewById(R.id.equipo);
 
 			dni.setText(record.getString("DNI"));
 			nombre.setText(record.getString("Nombre"));
@@ -61,9 +54,14 @@ public class DeleteActivity extends Activity {
 			telefono.setText(record.getString("Telefono"));
 			equipo.setText(record.getString("Equipo"));
 			
-			dni.setFocusable(false);
-		} catch (JSONException e1) {
-			e1.printStackTrace();
+			dni.setEnabled(false);
+			nombre.setFocusable(false);
+			apellidos.setFocusable(false);
+			direccion.setFocusable(false);
+			telefono.setFocusable(false);
+			equipo.setFocusable(false);
+		} catch (JSONException e) {
+			e.printStackTrace();
 		}
     }
 
@@ -86,17 +84,22 @@ public class DeleteActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
     
-    public void borrarRegistro(View v) {
-    	new BorradoBD().execute();
+    public void deleteRecord(View v) {
+    	new DeleteBD().execute();
+    	
+    	Intent i=new Intent();
+		i.putExtra("respuesta","Borrado realizado");
+		setResult(RESULT_OK,i);
+    	
 		finish();
     }
     
-    private class BorradoBD extends AsyncTask<String, Void, Void>{
+    private class DeleteBD extends AsyncTask<String, Void, Void>{
 
 		@Override
 		protected Void doInBackground(String... params) {
-			String url = getIntent().getExtras().getString("url");
-			String dni = getIntent().getExtras().getString("dni");
+			String url = extras.getString("url");
+			String dni = extras.getString("dni");
 			try {
 				AndroidHttpClient httpclient = AndroidHttpClient.newInstance("AndroidHttpClient");
 				HttpDelete httpdelete = new HttpDelete(url + "/" + dni);
@@ -109,4 +112,12 @@ public class DeleteActivity extends Activity {
 			return null;
 		}
     }
+    
+    @Override
+	public void onBackPressed(){
+		Intent i=new Intent();
+		i.putExtra("respuesta","Borrado cancelado");
+		setResult(RESULT_CANCELED,i);
+		super.onBackPressed();
+	}
 }

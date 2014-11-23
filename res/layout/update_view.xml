@@ -36,7 +36,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
-            android:id="@+id/ReadDni"
+            android:id="@+id/dni"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -57,7 +57,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
-            android:id="@+id/ReadNombre"
+            android:id="@+id/nombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -79,7 +79,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
-            android:id="@+id/ReadApellidos"
+            android:id="@+id/apellidos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -100,7 +100,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
-            android:id="@+id/ReadDireccion"
+            android:id="@+id/direccion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -121,7 +121,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
-            android:id="@+id/ReadTelefono"
+            android:id="@+id/telefono"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -142,7 +142,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
-            android:id="@+id/ReadEquipo"
+            android:id="@+id/equipo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -158,14 +158,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal" >
-
-        <Button
-            android:id="@+id/Update"
-            style="?android:attr/buttonStyleSmall"
+        
+        <ImageView
+            android:id="@+id/imageEditar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="modificarRegistro"
-            android:text="@string/Update" />
+            android:onClick="updateRecord"
+            android:src="@android:drawable/ic_menu_edit" />
 
     </LinearLayout>
 
