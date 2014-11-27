@@ -7,5 +7,27 @@
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="@string/action_settings"/>
+    
+    <group android:id="@+id/group1">
+    	<item android:id="@+id/MnuOpc1" 
+	      android:title="Opcion1" 
+	      android:icon="@android:drawable/ic_menu_preferences" 
+	      android:onClick="verPantallaPreferencias">	    
+		</item>
+		<item android:id="@+id/MnuOpc2"
+		      android:title="Opcion2" 
+		      android:icon="@android:drawable/ic_menu_compass">
+		</item>
+	</group>
+	<item android:id="@+id/MnuOpc3"
+	      android:title="Opcion3" 
+	      android:icon="@android:drawable/ic_menu_agenda">
+		<menu>
+			<item android:id="@+id/SubMnu3Opc1"
+				  android:title="Opcion 3.1" />
+			<item android:id="@+id/SubMnu3Opc2"
+				  android:title="Opcion 3.2" />
+		</menu>
+	</item>
 
 </menu>

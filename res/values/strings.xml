@@ -10,10 +10,6 @@
     <string name="progress_title">Settings</string>
     <string name="OperacionesServicioWeb">Operaciones Servicio Web</string>
     <string name="DniLabel">DNI</string>
-    <string name="Update">U</string>
-    <string name="Delete">D</string>
-    <string name="Create">C</string>
-    <string name="Read">R</string>
     <string name="ConsultaRegistros">Consulta de Registros</string>
     <string name="NombreLabel">Nombre</string>
     <string name="ApellidosLabel">Apellidos</string>
@@ -26,14 +22,18 @@
     <string name="Direccion">Dirección</string>
     <string name="Telefono">Teléfono</string>
     <string name="Equipo">Equipo</string>
-    <string name="FirstButton">&lt;&lt;</string>
-    <string name="PreviousButton">&lt;</string>
-    <string name="FollowingButton">></string>
-    <string name="LastButton">>></string>
     <string name="BorradoRegistro">Borrado de Registro</string>
     <string name="InsercionRegistro">Inserción de Registro</string>
     <string name="ModificacionRegistro">Modificación de Registro</string>
     <string name="vistaRegistros"></string>
     <string name="recordView"></string>
+    <string name="SearchButton"></string>
+    <string name="AddButton"></string>
+    <string name="EditButton"></string>
+    <string name="DeleteButton"></string>
+    <string name="FirstButton"></string>
+    <string name="PreviousButton"></string>
+    <string name="FollowingButton"></string>
+    <string name="LastButton"></string>
 
 </resources>

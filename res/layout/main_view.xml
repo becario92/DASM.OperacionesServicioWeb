@@ -58,6 +58,7 @@
             android:id="@+id/imageBuscar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/SearchButton"
             android:onClick="launchReadActivity"
             android:src="@android:drawable/ic_menu_search" />
 
@@ -65,6 +66,7 @@
             android:id="@+id/imageAnadir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/AddButton"
             android:onClick="launchCreateActivity"
             android:src="@android:drawable/ic_menu_add" />
 
@@ -72,6 +74,7 @@
             android:id="@+id/imageEditar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/EditButton"
             android:onClick="launchUpdateActivity"
             android:src="@android:drawable/ic_menu_edit" />
 
@@ -79,6 +82,7 @@
             android:id="@+id/imageBorrar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/DeleteButton"
             android:onClick="launchDeleteActivity"
             android:src="@android:drawable/ic_menu_delete" />
 

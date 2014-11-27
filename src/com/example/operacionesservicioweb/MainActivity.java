@@ -2,6 +2,8 @@ package com.example.operacionesservicioweb;
 
 import java.io.IOException;
 
+import android.content.SharedPreferences;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.util.EntityUtils;
@@ -15,6 +17,7 @@ import android.content.Intent;
 import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -50,11 +53,45 @@ public class MainActivity extends Activity {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
+		/*int id = item.getItemId();
 		if (id == R.id.action_settings) {
 			return true;
 		}
-		return super.onOptionsItemSelected(item);
+		return super.onOptionsItemSelected(item);*/
+		
+		switch (item.getItemId()) {
+        case R.id.MnuOpc1:
+    		Log.d("Preferencias", "Opción 1 pulsada...");
+            return true;
+        case R.id.MnuOpc2:
+    		Log.d("Preferencias", "Opción 2 pulsada...");
+            return true;
+        case R.id.MnuOpc3:
+    		Log.d("Preferencias", "Opción 3 pulsada...");
+            return true;
+        case R.id.SubMnu3Opc1:
+    		Log.d("Preferencias", "Opción 3.1 pulsada...");
+            return true;
+        case R.id.SubMnu3Opc2:
+    		Log.d("Preferencias", "Opción 3.2 pulsada...");
+            return true;
+        default:
+            return false;
+        }
+	}
+	
+	public void verPantallaPreferencias(MenuItem item){
+		Log.d("Preferencias", "Opción 1 pulsada...");
+		//startActivity(new Intent(this, OpcionesActivity.class));
+	}
+	
+	public void consultarPreferencias(View v) {
+		SharedPreferences pref =
+		      PreferenceManager.getDefaultSharedPreferences(this);
+
+		Log.d("Preferencias", "Opción 1: " + pref.getBoolean("opcion1", false));
+		Log.d("Preferencias", "Opción 2: " + pref.getString("opcion2", ""));
+		Log.d("Preferencias", "Opción 3: " + pref.getString("opcion3", ""));
 	}
 
 	public void launchCreateActivity(View v) {

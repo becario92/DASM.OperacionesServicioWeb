@@ -177,6 +177,7 @@
             android:id="@+id/imagePrimero"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/FirstButton"
             android:onClick="firstRecord"
             android:src="@android:drawable/ic_media_previous" />
 
@@ -184,6 +185,7 @@
             android:id="@+id/imageAnterior"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/PreviousButton"
             android:onClick="previousRecord"
             android:src="@android:drawable/ic_media_rew" />
 
@@ -191,6 +193,7 @@
             android:id="@+id/imageSiguiente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/FollowingButton"
             android:onClick="followingRecord"
             android:src="@android:drawable/ic_media_ff" />
 
@@ -198,6 +201,7 @@
             android:id="@+id/imageUltimo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/LastButton"
             android:onClick="lastRecord"
             android:src="@android:drawable/ic_media_next" />
 
