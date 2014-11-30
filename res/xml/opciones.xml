@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="Categoría 1">
-        <CheckBoxPreference
-            android:key="opcion1"
-            android:title="Preferencia 1"
-            android:summary="Descripción de la preferencia 1" />
-        <EditTextPreference
-            android:key="opcion2"
-            android:title="Preferencia 2"
-            android:summary="Descripción de la preferencia 2"
-            android:dialogTitle="Introduce valor" />
-    </PreferenceCategory>
-    <PreferenceCategory android:title="Categoría 2">
-        <ListPreference
-            android:key="opcion3"
-            android:title="Preferencia 3"
-            android:summary="Descripción de la preferencia 3"
-            android:dialogTitle="Indicar Pais"
-            android:entries="@array/pais"
-            android:entryValues="@array/codigopais" />
-    </PreferenceCategory>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+  	android:key="preferencias_principal" > 
+    <EditTextPreference
+        android:key="menu_servidor"
+        android:summary="Dirección del servidor al que se realizará la conexión"
+        android:title="URL Servidor" />
+    <EditTextPreference
+        android:key="menu_usuario"
+        android:summary="Usuario que realizará la conexión"
+        android:title="Usuario" />
+    <EditTextPreference
+        android:key="menu_clave"
+        android:summary="Clave del usuario que realizará la conexión"
+        android:title="Palabra clave" />
+
 </PreferenceScreen>

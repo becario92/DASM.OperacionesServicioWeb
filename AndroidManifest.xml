@@ -40,6 +40,10 @@
             android:name=".DeleteActivity"
             android:label="@string/title_delete_activity" >
         </activity>
+        <activity
+            android:name=".OpcionesActivity"
+            android:label="@string/title_options_activity" >
+        </activity>
     </application>
 
 </manifest>

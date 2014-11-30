@@ -2,8 +2,6 @@ package com.example.operacionesservicioweb;
 
 import java.io.IOException;
 
-import android.content.SharedPreferences;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.util.EntityUtils;
@@ -17,7 +15,6 @@ import android.content.Intent;
 import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,7 +28,8 @@ public class MainActivity extends Activity {
 	private final int READ_ACTIVITY = 002;
 	private final int UPDATE_ACTIVITY = 003;
 	private final int DELETE_ACTIVITY = 004;
-	private final String URL = "http://demo.calamar.eui.upm.es/dasmapi/v1/miw02/fichas";
+	private final int OPTIONS_ACTIVITY = 005;
+	private String URL;//http://demo.calamar.eui.upm.es/dasmapi/v1/miw02/fichas
 	private EditText dni;
 
 	@Override
@@ -39,6 +37,11 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_view);
 		dni = (EditText)findViewById(R.id.equipoText);
+		dni.setFocusable(false);
+		findViewById(R.id.imageBuscar).setClickable(false);
+		findViewById(R.id.imageAnadir).setClickable(false);
+		findViewById(R.id.imageEditar).setClickable(false);
+		findViewById(R.id.imageBorrar).setClickable(false);
 	}
 
 	@Override
@@ -48,50 +51,9 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		/*int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);*/
-		
-		switch (item.getItemId()) {
-        case R.id.MnuOpc1:
-    		Log.d("Preferencias", "Opción 1 pulsada...");
-            return true;
-        case R.id.MnuOpc2:
-    		Log.d("Preferencias", "Opción 2 pulsada...");
-            return true;
-        case R.id.MnuOpc3:
-    		Log.d("Preferencias", "Opción 3 pulsada...");
-            return true;
-        case R.id.SubMnu3Opc1:
-    		Log.d("Preferencias", "Opción 3.1 pulsada...");
-            return true;
-        case R.id.SubMnu3Opc2:
-    		Log.d("Preferencias", "Opción 3.2 pulsada...");
-            return true;
-        default:
-            return false;
-        }
-	}
-	
-	public void verPantallaPreferencias(MenuItem item){
-		Log.d("Preferencias", "Opción 1 pulsada...");
-		//startActivity(new Intent(this, OpcionesActivity.class));
-	}
-	
-	public void consultarPreferencias(View v) {
-		SharedPreferences pref =
-		      PreferenceManager.getDefaultSharedPreferences(this);
-
-		Log.d("Preferencias", "Opción 1: " + pref.getBoolean("opcion1", false));
-		Log.d("Preferencias", "Opción 2: " + pref.getString("opcion2", ""));
-		Log.d("Preferencias", "Opción 3: " + pref.getString("opcion3", ""));
+	public void launchOptionsActivity(MenuItem item) {
+		Intent i = new Intent(MainActivity.this, OpcionesActivity.class);
+		startActivityForResult(i, OPTIONS_ACTIVITY);
 	}
 
 	public void launchCreateActivity(View v) {
@@ -114,6 +76,15 @@ public class MainActivity extends Activity {
 	protected void onActivityResult(int actividad, int resultado, Intent datos) {
 		String respuesta = datos.getStringExtra("respuesta");
 		Toast.makeText(this, respuesta, Toast.LENGTH_LONG).show();
+		if(actividad == OPTIONS_ACTIVITY) {
+			URL=datos.getStringExtra("url");
+			dni.setFocusable(true);
+			dni.setFocusableInTouchMode(true);
+			findViewById(R.id.imageBuscar).setClickable(true);
+			findViewById(R.id.imageAnadir).setClickable(true);
+			findViewById(R.id.imageEditar).setClickable(true);
+			findViewById(R.id.imageBorrar).setClickable(true);
+		}
 	}
 
 	private class ReadBD extends AsyncTask<String, Void, String>{
